@@ -13,8 +13,8 @@ const personData = usePersonData()
 const {person, children} = storeToRefs(personData)
 
 const initialFormState: FormState = {
-  person: person.value,
-  children: children.value,
+  person: {...person.value},
+  children: [...children.value],
 }
 
 const initialChildState: PersonData = {
@@ -26,7 +26,7 @@ const formState = ref<FormState>({...initialFormState})
 
 const isFormSaved = ref(false)
 
-const isAddChildBtnDisbaled = computed(() => {
+const isAddChildBtnDisabled = computed(() => {
   return formState.value.children.length >= 5
 })
 
@@ -42,7 +42,7 @@ const handleChildRemove = (index: number) => {
 
 const handleFormSubmit = () => {
   person.value = formState.value.person
-  children.value = formState.value.children
+  children.value = formState.value.children.filter(child => child.name && child.age)
   isFormSaved.value = true
   setTimeout(() => {
     isFormSaved.value = false
@@ -76,7 +76,7 @@ const handleFormSubmit = () => {
         <UiButton
             outlined
             @click="handleChildAdd"
-            :disabled="isAddChildBtnDisbaled"
+            :disabled="isAddChildBtnDisabled"
         >
           <template #icon>
             <img src="../../assets/icons/plus.svg" alt="плюс"/>

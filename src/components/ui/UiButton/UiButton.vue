@@ -13,7 +13,7 @@ defineProps<{
       :disabled='disabled'
       :class="{
         'outlined': outlined,
-        'withIcon': this.$slots.icon,
+        'withIcon': $slots.icon,
         'disabled': disabled,
       }"
   >
