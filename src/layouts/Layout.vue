@@ -1,13 +1,11 @@
-<template>
-  <header>HEADER</header>
-  <router-view/>
-  <footer>FOOTER</footer>
-</template>
-
 <script setup lang="ts">
-
+import {Footer, Header} from "../components";
 </script>
 
-<style scoped>
-
-</style>
+<template>
+  <Header/>
+  <main>
+    <router-view/>
+  </main>
+  <Footer/>
+</template>

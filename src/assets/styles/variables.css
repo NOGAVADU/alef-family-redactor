@@ -1,0 +1,9 @@
+:root {
+    --color-black: #111111;
+    --color-black-weak: rgba(17, 17, 17, 0.48);
+    --color-blue: #01A7FD;
+
+    --text-font-weight-normal: 400;
+    --text-font-weight-bold: 500;
+    --text-font-weight-extrabold: 700;
+}
