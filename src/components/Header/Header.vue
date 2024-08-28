@@ -4,7 +4,7 @@
 
 <template>
   <header class="header">
-    <img src="/public/logo/logo.svg" alt="logo" class="logo"/>
+    <img src="/logo/logo.svg" alt="logo" class="logo"/>
     <nav class="nav">
       <router-link
           to="/form"
