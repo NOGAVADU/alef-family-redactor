@@ -3,7 +3,6 @@ import {UiButton, UiInput} from "../../components";
 import {ref} from "vue";
 import {PersonData, usePersonData} from "../../stores";
 import {storeToRefs} from "pinia";
-import {isFor} from "@babel/types";
 
 interface FormState {
   person: PersonData,
