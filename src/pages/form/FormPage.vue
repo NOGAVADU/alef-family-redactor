@@ -1,7 +1,5 @@
 <template>
-  <header>HEADER</header>
-  <router-view/>
-  <footer>FOOTER</footer>
+  FORM PAGE
 </template>
 
 <script setup lang="ts">

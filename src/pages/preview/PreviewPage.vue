@@ -1,7 +1,5 @@
 <template>
-  <header>HEADER</header>
-  <router-view/>
-  <footer>FOOTER</footer>
+  PREVIEW
 </template>
 
 <script setup lang="ts">
