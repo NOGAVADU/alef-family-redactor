@@ -5,12 +5,14 @@ defineProps<{
   type: 'text' | 'number';
 }>()
 
+const value = defineModel()
 </script>
 
 <template>
   <label class="text-thin label">
     {{ label }}
     <input
+        v-model="value"
         :type="type"
         required
         :placeholder="placeholder"
