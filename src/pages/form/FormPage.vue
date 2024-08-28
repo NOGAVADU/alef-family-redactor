@@ -1,23 +1,21 @@
 <script setup lang="ts">
 import {UiButton, UiInput} from "../../components";
 import {ref} from "vue";
-
-interface PersonData {
-  name: string;
-  age: number | null;
-}
+import {PersonData, usePersonData} from "../../stores";
+import {storeToRefs} from "pinia";
+import {isFor} from "@babel/types";
 
 interface FormState {
   person: PersonData,
   children: PersonData[],
 }
 
+const personData = usePersonData()
+const {person, children} = storeToRefs(personData)
+
 const initialFormState: FormState = {
-  person: {
-    name: "Мосолов Даниил",
-    age: 21,
-  },
-  children: []
+  person: person.value,
+  children: children.value,
 }
 
 const initialChildState: PersonData = {
@@ -26,6 +24,8 @@ const initialChildState: PersonData = {
 }
 
 const formState = ref<FormState>({...initialFormState})
+
+const isFormSaved = ref(false)
 
 const handleChildAdd = () => {
   if (formState.value.children.length < 5) {
@@ -38,7 +38,12 @@ const handleChildRemove = (index: number) => {
 }
 
 const handleFormSubmit = () => {
-  console.log(formState.value)
+  person.value = formState.value.person
+  children.value = formState.value.children
+  isFormSaved.value = true
+  setTimeout(() => {
+    isFormSaved.value = false
+  }, 1000)
 }
 </script>
 
@@ -113,7 +118,7 @@ const handleFormSubmit = () => {
         style="align-self: flex-start"
         @click.prevent="handleFormSubmit"
     >
-      Сохранить
+      {{ isFormSaved ? 'Сохранено' : 'Сохранить' }}
     </UiButton>
   </form>
 </template>
