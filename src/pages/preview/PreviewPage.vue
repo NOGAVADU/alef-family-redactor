@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import {usePersonData} from "../../stores";
 import {storeToRefs} from "pinia";
+import {getFormatAge} from "../../utils";
 
 const personData = usePersonData()
 const {person, children} = storeToRefs(personData)
@@ -12,7 +13,7 @@ const {person, children} = storeToRefs(personData)
     <div
         class="text-big-bold"
     >
-      {{ person.name }}, {{ person.age }} лет
+      {{ person.name }}, {{getFormatAge(person.age)}}
     </div>
   </div>
 
@@ -23,7 +24,7 @@ const {person, children} = storeToRefs(personData)
         v-for="child in children"
         class="text-big-bold child__info"
     >
-      {{ child.name }}, {{ child.age }} лет
+      {{ child.name }}, {{getFormatAge(child.age)}}
     </span>
     </div>
   </div>
