@@ -2,6 +2,7 @@
 defineProps<{
   type?: 'button' | 'submit' | 'reset',
   outlined?: boolean,
+  disabled?: boolean,
 }>()
 </script>
 
@@ -9,9 +10,11 @@ defineProps<{
   <button
       :type="type ?? 'button'"
       class="button"
+      :disabled='disabled'
       :class="{
         'outlined': outlined,
-        'withIcon': this.$slots.icon
+        'withIcon': this.$slots.icon,
+        'disabled': disabled,
       }"
   >
     <slot name="icon"/>
@@ -39,5 +42,9 @@ defineProps<{
 
 .withIcon {
   padding: 0.5rem 1.5rem;
+}
+
+.disabled {
+  display: none;
 }
 </style>

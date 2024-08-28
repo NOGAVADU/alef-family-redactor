@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import {UiButton, UiInput} from "../../components";
-import {ref} from "vue";
+import {computed, ref} from "vue";
 import {PersonData, usePersonData} from "../../stores";
 import {storeToRefs} from "pinia";
 
@@ -25,6 +25,10 @@ const initialChildState: PersonData = {
 const formState = ref<FormState>({...initialFormState})
 
 const isFormSaved = ref(false)
+
+const isAddChildBtnDisbaled = computed(() => {
+  return formState.value.children.length >= 5
+})
 
 const handleChildAdd = () => {
   if (formState.value.children.length < 5) {
@@ -72,6 +76,7 @@ const handleFormSubmit = () => {
         <UiButton
             outlined
             @click="handleChildAdd"
+            :disabled="isAddChildBtnDisbaled"
         >
           <template #icon>
             <img src="../../assets/icons/plus.svg" alt="плюс"/>
