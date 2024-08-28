@@ -4,8 +4,15 @@ import {Footer, Header} from "../components";
 
 <template>
   <Header/>
-  <main>
+  <main class="main">
     <router-view/>
   </main>
   <Footer/>
 </template>
+
+<style scoped>
+  .main {
+    align-self: center;
+    min-width: 620px;
+  }
+</style>
