@@ -85,12 +85,12 @@ const handleFormSubmit = () => {
         </UiButton>
       </legend>
 
-      <div
+      <span
           v-if="!formState.children.length"
           class="text-thin no-child-msg"
       >
         Здесь пока что пусто
-      </div>
+      </span>
 
       <fieldset
           v-for="(child, i) in formState.children"
@@ -109,7 +109,7 @@ const handleFormSubmit = () => {
             type="number"
         />
         <button
-            class="button__delete"
+            class="delete__child_btn"
             @click="handleChildRemove(i)"
         >
           Удалить
@@ -170,7 +170,7 @@ const handleFormSubmit = () => {
   border-bottom: 1px solid #F1F1F1;
 }
 
-.button__delete {
+.delete__child_btn {
   background: transparent;
   color: var(--color-blue);
 }

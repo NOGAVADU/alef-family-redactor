@@ -9,37 +9,37 @@ const {person, children} = storeToRefs(personData)
 
 <template>
   <div class="person__info">
-    <div class="text-big title">Персональные данные</div>
-    <div
-        class="text-big-bold"
-    >
-      {{ person.name }}, {{getFormatAge(person.age)}}
+    <h2 class="text-big title">Персональные данные</h2>
+    <div class="text-big-bold">
+      {{ person.name }}, {{ getFormatAge(person.age) }}
     </div>
   </div>
 
-  <div>
-    <div class="text-big title">Дети</div>
-    <div class="children_container">
-    <span
-        v-for="child in children"
-        class="text-big-bold child__info"
+  <div v-if="children.length > 0">
+    <h2 class="text-big title">Дети</h2>
+    <ul
+        class="children_list"
     >
-      {{ child.name }}, {{getFormatAge(child.age)}}
-    </span>
-    </div>
+      <li
+          v-for="child in children"
+          class="text-big-bold child__info"
+      >
+        {{ child.name }}, {{ getFormatAge(child.age) }}
+      </li>
+    </ul>
   </div>
 </template>
 
 <style scoped>
-.person__info {
-  margin-bottom: 4rem;
-}
-
 .title {
   margin-bottom: 1rem;
 }
 
-.children_container {
+.person__info {
+  margin-bottom: 4rem;
+}
+
+.children_list {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
